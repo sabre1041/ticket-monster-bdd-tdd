@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -37,6 +38,19 @@ public class VenueServiceTest {
         assertEquals("Roy Thomson Hall", venue.getName());
     }
     
+    @Test
+    public void testGetVenueByCityName() {
+
+        // Test retrieve value by city name
+    	String name = "Boston";
+
+        Response venueResponse = venueService.findByCityName(name);
+        assertNotNull(venueResponse);
+        Venue venue = (Venue) venueResponse.getEntity();
+        assertNotNull(venue);
+        assertEquals(name, venue.getAddress().getCity());
+    }
+
     @Test
     public void testPagination() {
         
