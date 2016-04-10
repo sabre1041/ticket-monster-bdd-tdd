@@ -4,6 +4,7 @@ import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -54,6 +55,15 @@ public class VenueService extends BaseEntityService<Venue> {
           return Response.status(Status.NOT_FOUND).build();
        }
        return Response.ok(entity).build();
+    }
+    
+    @POST
+    @Path("/addVenue/{city}/{venue}")
+    @Produces("application/json")
+    public Response addVenueToCity(@PathParam("city") String city, @PathParam("venue") String venue)
+    {
+    	//TODO
+    	return null;
     }
 
 }
