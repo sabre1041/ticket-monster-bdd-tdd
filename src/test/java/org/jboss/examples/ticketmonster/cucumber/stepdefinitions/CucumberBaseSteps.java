@@ -59,22 +59,14 @@ public class CucumberBaseSteps {
         assertEquals("This city isn't supposed to have venues!", Status.NOT_FOUND.getStatusCode(), responseStatus);
 	}
 	
+	@Given("^\"([^\"]*)\" has at least one venue$")
+	public void has_at_least_one_venue(String arg1) throws Throwable {
+	}
 
 	@When("^I search for \"([^\"]*)\"$")
 	public void i_search_for(String cityName) throws Throwable {
 		searchResponse = venueService.findByCityName(cityName);
-	}
-	
-	
-	@When("^I add \"([^\"]*)\" to \"([^\"]*)\"$")
-	public void i_add_to(String venueName, String cityName) throws Throwable {
-	     // This will hit the service to actually add the venue
-		Response addToCityResponse = venueService.addVenueToCity(cityName, venueName);
-		assertNotNull(addToCityResponse);
-		assertEquals("Could not add the venue to the city!", Status.CREATED, addToCityResponse.getStatus() );
-		
-	}
-	
+	}	
 
 	@Then("^I should receive details about the \"([^\"]*)\" venues$")
 	public void i_should_receive_details_about_the_venues(String cityName) throws Throwable {
