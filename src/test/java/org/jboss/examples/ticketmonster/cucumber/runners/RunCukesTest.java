@@ -6,7 +6,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(glue = {"org.jboss.examples.ticketmonster.cucumber.stepdefinitions"}, tags = {"~@not_implemented"}, features = "src/test/resources/features", strict = true )
+@CucumberOptions(glue = {"org.jboss.examples.ticketmonster.cucumber.stepdefinitions"}, tags = {"@wip", "~@not_implemented"}, features = "src/test/resources/features", strict = true )
 public class RunCukesTest {
 
 }

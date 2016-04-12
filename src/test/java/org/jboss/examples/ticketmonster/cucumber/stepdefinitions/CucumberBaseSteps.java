@@ -7,34 +7,42 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.examples.ticketmonster.rest.dto.VenueDTO;
+import org.jboss.examples.ticketmonster.model.Address;
 import org.jboss.examples.ticketmonster.model.Venue;
 import org.jboss.examples.ticketmonster.rest.VenueService;
-import org.jboss.examples.ticketmonster.test.rest.RESTDeployment;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.runner.RunWith;
+import org.jboss.examples.ticketmonster.rest.VenueEndpoint;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-@RunWith(Arquillian.class)
 public class CucumberBaseSteps {
 	
 	Response searchResponse = null;
     
-    @Deployment
-    public static WebArchive deployment() {
-        return RESTDeployment.deployment();
-    }
-   
+    private VenueService venueService = new VenueService();
+    
     @Inject
-    private VenueService venueService;
+    private VenueEndpoint venueEndpoint = new VenueEndpoint();
 
 	@Given("^a list of venues$")
-	public void a_list_of_venues() throws Throwable { 
+	public void a_list_of_venues() throws Throwable {
+		Venue venue = new Venue();
+		
+		Address address = new Address();
+		address.setStreet("4 Yawkey Way");
+		address.setCountry("USA");
+		address.setCity("Boston");
+		
+		venue.setAddress(address);
+		venue.setName("Fenway Park");
+		
+		VenueDTO venueDTO = new VenueDTO(venue);
+		
+		venueEndpoint.create(venueDTO);
+
 	}
 	
 	
