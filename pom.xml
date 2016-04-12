@@ -70,6 +70,7 @@
         <buildhelper.plugin.version>1.7</buildhelper.plugin.version>
         <cucumber.version>1.2.4</cucumber.version>
         <org.springframework.version>4.1.6.RELEASE</org.springframework.version>
+        <powermock.version>1.6.4</powermock.version>
     </properties>
 
     <dependencyManagement>
@@ -257,6 +258,30 @@
         	<artifactId>cucumber-java</artifactId>
         	<version>${cucumber.version}</version>
         </dependency>
+  		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+<dependency>
+  <groupId>org.powermock</groupId>
+  <artifactId>powermock-module-junit4-rule</artifactId>
+  <version>${powermock.version}</version>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.powermock</groupId>
+  <artifactId>powermock-classloading-xstream</artifactId>
+  <version>${powermock.version}</version>
+  <scope>test</scope>
+</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 
     <build>
